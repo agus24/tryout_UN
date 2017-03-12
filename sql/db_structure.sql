@@ -31,6 +31,12 @@ CREATE TABLE `matpel` (
   `nama` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+INSERT INTO `matpel` (`id`, `nama`) VALUES
+(1, 'Bahasa Indonesia'),
+(2, 'Matematika'),
+(3, 'Bahasa Inggris'),
+(4, 'IPA');
+
 
 -- --------------------------------------------------------
 

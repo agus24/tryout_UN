@@ -48,9 +48,10 @@ class PullData
     {
         $this->tipe_soal = $tipe_soal;
         $this->jenjang = $jenjang;
-        $this->data = leechData($link);
-        $this->query = new Query;
         $this->matpel = $matpel;
+
+        $this->query = new Query;
+        $this->data = leechData($link);
     }
 
     /**
@@ -69,6 +70,7 @@ class PullData
     {
         $cek = $this->query->insert("tipe_soal",$this->genSetValueForTipeSoal());
         $tipe_soal_id = $this->getLastTipeSoalId();
+
         foreach($this->data as $key => $value)
         {
             $setValue = "no=".($key+1).",nama='".$value['pertanyaan']."',tipe_soal_id='".$tipe_soal_id."'";
