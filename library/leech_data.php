@@ -15,13 +15,13 @@ $tidy->parseString($html, $config, 'utf8');
 $tidy->cleanRepair();
 
 $html = str_get_html($tidy);
-$result = array();
+$soal = array();
 foreach($html->find('div[class^="soal_ujian page"]') as $e) 
 {
-	$temp= array('soal'=>'', 'jawaban'=>array(), 'kunci'=>'');
+	$temp= array('pertanyaan'=>'', 'jawaban'=>array(), 'kunci'=>'');
 	foreach($e->find('div[class="pertanyaan"]') as $f)
 	{
-		$temp['soal'] = strip_tags($f->innertext);
+		$temp['pertanyaan'] = preg_replace('/\s+/', ' ',strip_tags($f->innertext));
 	}
 	
 	foreach($e->find('table') as $f)
@@ -30,14 +30,14 @@ foreach($html->find('div[class^="soal_ujian page"]') as $e)
 		foreach($f->find('tr') as $g)
 		{
 			if($a!=0) {
-				$temp['jawaban'][] = $g->find('td',1)->innertext();
+				$temp['jawaban'][] = str_replace('&nbsp;','', trim($g->find('td',1)->innertext()));
 				if( $g->find('td',0)->find('div',0)->find('input',0)->getAttribute('value')==1) $temp['kunci']=$a;
 			
 			}
 			$a++;
 		}
 	}
-	$result[] = $temp;
+	$soal[] = $temp;
 }
-    print_r($result);
+    print_r($soal);
 ?>
