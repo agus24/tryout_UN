@@ -1,10 +1,11 @@
 <?php
-require ('db_con.php');
+
+include ('db_con.php');
 
 class Query extends Database
 {
 
-	function select($table,$field,$cond)
+	public function select($table,$field,$cond)
 	{
 		$condition='1=1';
 		$condition.=$cond;
@@ -24,7 +25,7 @@ class Query extends Database
 		}
 	}
 
-	function custQry($qry)
+	public function custQry($qry)
 	{
 		try
 		{
@@ -39,7 +40,7 @@ class Query extends Database
 		}
 	}
 
-	function selectAll($table,$cond)
+	public function selectAll($table,$cond)
 	{
 		$condition 		= '1=1';
 		$condition 		.= $cond;
@@ -59,7 +60,7 @@ class Query extends Database
 		}
 	}
 
-	function update($table,$set_value,$cond)
+	public function update($table,$set_value,$cond)
 	{
 
 		$query		="UPDATE $table SET $set_value WHERE $cond";
@@ -77,7 +78,7 @@ class Query extends Database
 		}
 	}
 
-	function insert($table,$set_value)
+	public function insert($table,$set_value)
 	{
 		$query = "INSERT INTO $table set $set_value";
  		// return $query;
@@ -93,7 +94,7 @@ class Query extends Database
 		}
 	}
 
-	function delete($table,$cond)
+	public function delete($table,$cond)
 	{
 		$query = "DELETE FROM $table WHERE $cond";
  		// return $query;
@@ -108,5 +109,15 @@ class Query extends Database
 			return die($e->getMessage());
 		}
 	}
+
+	public function getLastId($table,$field,$field_order = "")
+	{
+		$field_order = ($field_order == "") ? $field : $field_order;
+		$query = "SELECT $field from $table order by $field_order desc limit 1";
+		$stmt = $this->db->prepare($query);
+		$stmt->execute();
+		$result = $stmt->fetchAll();
+
+		return $result[0][$field];
+	}
 }
-?>

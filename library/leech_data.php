@@ -4,9 +4,8 @@
 */
 require("simple_html_dom.php");
 
-function getDataCollection() {
+function leechData($link) {
 
-	$link = "http://tryoutunonline.com/soal-86-prediksi_soal_usbn.html";
 	$html = file_get_contents($link);
 
 	$config = array(

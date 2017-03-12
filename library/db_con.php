@@ -13,7 +13,7 @@ class Database{
     $password = '';
 
     // nama database //
-    $database = 'pos';
+    $database = 'tryout';
 
     try {
       $this->db = new PDO("mysql:host=$hostname;dbname=$database", $username, $password);
@@ -32,4 +32,3 @@ class Database{
     return $this->db->query($sql);
   }
 }
-?>
