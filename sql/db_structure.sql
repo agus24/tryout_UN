@@ -31,12 +31,6 @@ CREATE TABLE `matpel` (
   `nama` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
---
--- Dumping data for table `matpel`
---
-
-INSERT INTO `matpel` (`id`, `nama`) VALUES
-(1, 'Bahasa Indonesia');
 
 -- --------------------------------------------------------
 
@@ -51,12 +45,6 @@ CREATE TABLE `pertanyaan` (
   `tipe_soal_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
---
--- Dumping data for table `pertanyaan`
---
-
-INSERT INTO `pertanyaan` (`id`, `no`, `nama`, `tipe_soal_id`) VALUES
-(1, 1, 'Siapa Dia?', 1);
 
 -- --------------------------------------------------------
 
@@ -72,13 +60,6 @@ CREATE TABLE `pilihan` (
   `tipe` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
---
--- Dumping data for table `pilihan`
---
-
-INSERT INTO `pilihan` (`id`, `nama_pilihan`, `nama_jawaban`, `pertanyaan_id`, `tipe`) VALUES
-(1, 'a', 'Saya', 1, 1);
-
 -- --------------------------------------------------------
 
 --
@@ -92,12 +73,6 @@ CREATE TABLE `tipe_soal` (
   `jenjang` varchar(3) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
---
--- Dumping data for table `tipe_soal`
---
-
-INSERT INTO `tipe_soal` (`id`, `judul`, `matpel_id`, `jenjang`) VALUES
-(1, 'UN SMP 2012', 1, 'SMP');
 
 -- --------------------------------------------------------
 
